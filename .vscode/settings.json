@@ -1,0 +1,8 @@
+{
+    "java.compile.nullAnalysis.mode": "disabled",
+    "editor.formatOnSave": false,
+    "dart.formatOnSave": false,
+    "[dart]": {
+        "editor.formatOnSave": false    
+    }
+}
