@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart'; // 導入 Flutter 的 Material 設計庫
+import 'package:get/get.dart'; // 導入 GetX 庫
+
+class ListViewController extends GetxController {
+  // 定義一個 ListViewController 繼承自 GetxController
+  var removeLeading = false.obs; // 使用 Rx 變量來管理是否顯示返回按鈕
+}
 
 class ListViewPage extends StatelessWidget {
   // 定義一個無狀態的 ListViewPage 小部件
-
-  final bool removeLeading; // 添加一個參數用於是否顯示返回按鈕
-
-  ListViewPage({this.removeLeading = false}); // 構造函數,默認為 false
+  final ListViewController controller =
+      Get.put(ListViewController()); // 使用 Get.put() 創建並注入控制器
+  final bool removeLeading;
+  ListViewPage({this.removeLeading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +21,8 @@ class ListViewPage extends StatelessWidget {
       appBar: AppBar(
         // 設置頂部應用欄
         title: Text('ListView Page'), // 設置應用欄標題
-        automaticallyImplyLeading: !removeLeading,
+        automaticallyImplyLeading:
+            !controller.removeLeading.value && !removeLeading, // // 同時考慮控制器和參數
       ),
       body: ListView.builder(
         // 使用 ListView.builder 來建立可滾動的列表

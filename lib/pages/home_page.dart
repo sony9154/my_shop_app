@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart'; // 導入 Flutter 的 Material 設計庫
-import 'basic_widgets_page.dart'; // 導入基礎組件頁面小部件
-import 'layout_widgets_page.dart'; // 導入佈局組件頁面小部件
+import 'package:get/get.dart'; // 導入 GetX 包
 
 class MyHomePage extends StatelessWidget {
   // 定義一個無狀態的 MyHomePage 小部件
@@ -36,7 +35,8 @@ class MyHomePage extends StatelessWidget {
                   height: 100, // 設置容器高度為 100 像素
                   color: Colors.red, // 設置容器背景色為紅色
                   child: Center(
-                    child: Image.network('https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg'), // 顯示文字並居中對齊
+                    child: Image.network(
+                        'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg'), // 顯示文字並居中對齊
                   ),
                 ),
                 SizedBox(width: 10), // 設置固定寬度的空白區域，寬度為 10 像素
@@ -72,13 +72,7 @@ class MyHomePage extends StatelessWidget {
               // 建立一個 RaisedButton 小部件
               onPressed: () {
                 // 按鈕按下時執行的動作
-                Navigator.push(
-                  // 使用 Navigator.push 導覽到新的頁面
-                  context, // 當前上下文
-                  MaterialPageRoute(
-                    builder: (context) => BasicWidgetsPage(), // 指定導覽的目標頁面為 BasicWidgetsPage
-                  ),
-                );
+                Get.toNamed('/basic_widgets'); // 使用 GetX 進行導航
               },
               child: Text('Go to Basic Widgets Page'), // 按鈕上的文字
             ),
@@ -86,13 +80,7 @@ class MyHomePage extends StatelessWidget {
               // 建立一個 RaisedButton 小部件
               onPressed: () {
                 // 按鈕按下時執行的動作
-                Navigator.push(
-                  // 使用 Navigator.push 導覽到新的頁面
-                  context, // 當前上下文
-                  MaterialPageRoute(
-                    builder: (context) => LayoutWidgetsPage(), // 指定導覽的目標頁面為 LayoutWidgetsPage
-                  ),
-                );
+                Get.toNamed('layout_widgets');
               },
               child: Text('Go to Layout Widgets Page'), // 按鈕上的文字
             ),
@@ -100,7 +88,7 @@ class MyHomePage extends StatelessWidget {
               // 建立一個 ElevatedButton 小部件
               onPressed: () {
                 // 按鈕按下時執行的動作
-                Navigator.pushNamed(context, '/form'); // 使用命名路由導航到表單頁面
+                Get.toNamed('/form');
               },
               child: Text('Go to Form Page'), // 按鈕上的文字
             ),
@@ -108,7 +96,7 @@ class MyHomePage extends StatelessWidget {
               // 建立一個 ElevatedButton 小部件
               onPressed: () {
                 // 按鈕按下時執行的動作
-                Navigator.pushNamed(context, '/scroll'); // 使用命名路由導航到滾動頁面
+                Get.toNamed('/scroll');
               },
               child: Text('Go to Scroll Page'), // 按鈕上的文字
             ),
@@ -116,7 +104,7 @@ class MyHomePage extends StatelessWidget {
               // 建立一個 ElevatedButton 小部件
               onPressed: () {
                 // 按鈕按下時執行的動作
-                Navigator.pushNamed(context, '/listview'); // 導航到列表頁面
+                Get.toNamed('/listview');
               },
               child: Text('Go to ListView Page'), // 按鈕上的文字
             ),
@@ -124,7 +112,7 @@ class MyHomePage extends StatelessWidget {
               // 建立一個 ElevatedButton 小部件
               onPressed: () {
                 // 按鈕按下時執行的動作
-                Navigator.pushNamed(context, '/gridview'); // 導航到網格頁面
+                Get.toNamed('/gridview');// 使用 GetX 進行導航
               },
               child: Text('Go to GridView Page'), // 按鈕上的文字
             ),

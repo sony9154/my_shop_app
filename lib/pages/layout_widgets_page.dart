@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart'; // 導入 Flutter 的 Material 設計庫
+import 'package:get/get.dart';
 
 class LayoutWidgetsPage extends StatelessWidget {
   // 定義一個無狀態的 LayoutWidgetsPage 小部件
@@ -29,23 +30,33 @@ class LayoutWidgetsPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center, // 設置主軸（水平方向）的對齊方式為居中
               children: <Widget>[
                 // 定義 Row 的子部件列表
-                Container(
-                  // 建立一個容器小部件
-                  width: 100, // 設置容器寬度為 100 像素
-                  height: 100, // 設置容器高度為 100 像素
-                  color: Colors.red, // 設置容器背景色為紅色
-                  child: Center(
-                    child: Text('Item 1'), // 顯示文字並居中對齊
+                GestureDetector(
+                  // 使用 GestureDector 使容器可點擊
+                  onTap: () {
+                    Get.snackbar('Item 1', 'You clicked on Item 1', snackPosition: SnackPosition.BOTTOM);
+                  },
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.red,
+                    child: Center(child: Text('Item 1'),) // 顯示文字並居中對齊
                   ),
                 ),
                 SizedBox(width: 10), // 設置固定寬度的空白區域，寬度為 10 像素
-                Container(
-                  // 建立另一個容器小部件
-                  width: 100, // 設置容器寬度為 100 像素
-                  height: 100, // 設置容器高度為 100 像素
-                  color: Colors.blue, // 設置容器背景色為藍色
-                  child: Center(
-                    child: Text('Item 2'), // 顯示文字並居中對齊
+                GestureDetector(
+                  // 使用 GestureDetector 使容器可點擊
+                  onTap: () {
+                    Get.snackbar(
+                      'Item 2', 
+                      'You clicked on Item 2', 
+                      snackPosition: SnackPosition.TOP,
+                    );
+                  },
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.blue,
+                    child: Center(child: Text('Item 2')),
                   ),
                 ),
               ],

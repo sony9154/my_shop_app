@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart'; // 導入 Flutter 的 Material 設計庫
+import 'package:get/get.dart'; // 導入 GetX 包
 
 class BasicWidgetsPage extends StatelessWidget {
   // 定義一個無狀態的 BasicWidgetsPage 小部件
@@ -41,6 +42,11 @@ class BasicWidgetsPage extends StatelessWidget {
               // 建立一個 ElevatedButton 小部件
               onPressed: () {
                 // 按鈕按下時執行的動作
+                Get.snackbar(
+                  'Button Clicked', // 設置 Snackbar 的標題
+                  'You clicked the button!', // 設置 Snackbar 的內容
+                  snackPosition: SnackPosition.BOTTOM, // 設置 Snackbar 顯示的位置
+                );
               },
               child: Text('Click Me'), // 按鈕上的文字
             ),

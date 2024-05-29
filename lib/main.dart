@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; // 導入 Flutter 的 Material 設計庫
-import 'routes/app_routes.dart'; // 導入自定義的路由
+import 'package:get/get.dart'; // 導入 GetX 庫
+import 'routes/app_pages.dart'; // 導入get路由AppPages
 
 void main() {
   runApp(MyApp()); // 入口方法，運行 MyApp 小部件
@@ -10,14 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // 重寫 build 方法來構建小部件
-    return MaterialApp(
-      // 返回一個 MaterialApp 小部件
+    return GetMaterialApp( // 使用 GetMaterialApp 代替 MaterialApp，提供 GetX 的路由和狀態管理
       title: 'My Shop App', // 設置應用程序的標題
       theme: ThemeData(
         primarySwatch: Colors.yellow, // 設置主色調為黃色
       ),
       initialRoute: '/', // 設置初始路由為首頁
-      routes: AppRoutes.routes, // 設置應用程序的路由表
+      getPages: AppPages.routes, // 設置應用程序的路由表
     );
   }
 }

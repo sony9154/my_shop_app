@@ -1,33 +1,34 @@
 import 'package:flutter/material.dart'; // 導入 Flutter 的 Material 設計庫
+import 'package:get/get.dart'; // 導入 GetX 庫
 
-class FormPage extends StatefulWidget {
-  // 定義一個有狀態的 FormPage 小部件
-  @override
-  _FormPageState createState() => _FormPageState(); // 建立並返回 FormPage 的狀態對象
-}
+class FormController extends GetxController {
+  // 定義一個表單控制器繼承自 GetxController
+  final formKey = GlobalKey<FormState>(); // 定義一個全局鍵來識別表單
+  final nameController = TextEditingController(); // 定義一個控制器來管理 TextField 的內容
 
-class _FormPageState extends State<FormPage> {
-  // 定義 FormPage 的狀態類
-  final _formKey = GlobalKey<FormState>(); // 定義一個全局鍵來識別表單
-  final _nameController = TextEditingController(); // 定義一個控制器來管理 TextField 的內容
-
-  @override
-  void dispose() {
-    // 重寫 dispose 方法
-    _nameController.dispose(); // 在銷毀小部件之前釋放控制器
-    super.dispose(); // 調用父類的 dispose 方法
-  }
-
-  void _submitForm() {
+  void submitForm() {
     // 定義一個方法，用來提交表單
-    if (_formKey.currentState?.validate() ?? false) {
+    if (formKey.currentState?.validate() ?? false) {
       // 驗證表單是否有效
-      ScaffoldMessenger.of(context).showSnackBar(
-        // 顯示一個提示消息
-        SnackBar(content: Text('Form Submitted: ${_nameController.text}')), // 顯示提交的信息
+      Get.snackbar(
+        'Form Submitted', // 設置 Snackbar 的標題
+        'Name: ${nameController.text}', // 設置 Snackbar 的內容
+        snackPosition: SnackPosition.BOTTOM, // 設置 Snackbar 顯示的位置
       );
     }
   }
+
+  @override
+  void onClose() {
+    // 重寫 onClose 方法
+    nameController.dispose(); // 在銷毀控制器之前釋放它
+    super.onClose(); // 調用父類的 onClose 方法
+  }
+}
+
+class FormPage extends StatelessWidget {
+  // 定義一個無狀態的 FormPage 小部件
+  final FormController controller = Get.put(FormController()); // 使用 Get.put() 創建並注入控制器
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +44,14 @@ class _FormPageState extends State<FormPage> {
         padding: const EdgeInsets.all(16.0), // 設置內邊距為16像素
         child: Form(
           // 建立一個表單小部件
-          key: _formKey, // 設置表單的鍵
+          key: controller.formKey, // 設置表單的鍵
           child: Column(
             // 建立一個垂直方向的佈局
             children: <Widget>[
               // 定義 Column 的子部件列表
               TextFormField(
                 // 建立一個文本輸入框小部件
-                controller: _nameController, // 設置控制器
+                controller: controller.nameController, // 設置控制器
                 decoration: InputDecoration(labelText: 'Name'), // 設置輸入框的裝飾，包括標籤文本
                 validator: (value) {
                   // 設置輸入框的驗證方法
@@ -63,7 +64,7 @@ class _FormPageState extends State<FormPage> {
               SizedBox(height: 20), // 建立一個固定高度的空白區域，高度為20像素
               ElevatedButton(
                 // 建立一個 ElevatedButton 小部件
-                onPressed: _submitForm, // 設置按鈕按下時呼叫的方法
+                onPressed: controller.submitForm, // 設置按鈕按下時呼叫的方法
                 child: Text('Submit'), // 設置按鈕上的文字
               ),
             ],
