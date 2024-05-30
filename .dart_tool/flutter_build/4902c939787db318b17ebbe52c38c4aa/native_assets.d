@@ -1,0 +1,1 @@
+ /Users/hsuhua/Documents/myOwnProjects/Flutter/my_shop_app/.dart_tool/flutter_build/4902c939787db318b17ebbe52c38c4aa/native_assets.yaml: 

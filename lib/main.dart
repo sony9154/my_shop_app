@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart'; // 導入 Flutter 的 Material 設計庫
 import 'package:get/get.dart'; // 導入 GetX 庫
 import 'routes/app_pages.dart'; // 導入get路由AppPages
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: ".env");
   runApp(MyApp()); // 入口方法，運行 MyApp 小部件
 }
 
