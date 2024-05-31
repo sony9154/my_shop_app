@@ -9,6 +9,7 @@ import '../controllers/tab_controller.dart';
 import '../pages/form_page.dart'; 
 import '../pages/listview_page.dart';
 import '../pages/gridview_page.dart';
+import 'package:my_shop_app/pages/movielist_page.dart';
 
 class TabPage extends StatelessWidget {
   final AppTabController tabController = Get.put(AppTabController()); // 創建並注入 TabController
@@ -33,8 +34,10 @@ class TabPage extends StatelessWidget {
             return ScrollPage();
           case 6:
             return ListViewPage();
-          default:
+          case 7:
             return GridViewPage();
+          default:
+            return MovieListPage();
         }
       }),
       bottomNavigationBar: Obx(() => BottomNavigationBar(
@@ -75,6 +78,10 @@ class TabPage extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(Icons.grid_on), // 設置圖標
                 label: 'GridView', // 設置標籤文字
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.movie), // 設置圖標
+                label: 'MovieList', // 設置標籤文字
               ),
             ],
           )),

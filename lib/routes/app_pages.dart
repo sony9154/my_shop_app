@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:my_shop_app/pages/movielist_page.dart';
 import '../pages/tab_page.dart'; // 導入首頁小部件
 import '../pages/home_page.dart'; // 導入首頁小部件
 import '../pages/counter_page.dart'; // 導入計數器頁面小部件
@@ -20,5 +21,6 @@ class AppPages {
     GetPage(name: '/scroll', page: () => ScrollPage()), // 設置滾動頁面的路由對應頁面
     GetPage(name: '/listview', page: () => ListViewPage()), // 設置列表頁面的路由對應頁面
     GetPage(name: '/gridview', page: () => GridViewPage()), // 設置網格頁面的路由對應頁面
+    GetPage(name: '/movielist', page: () => MovieListPage()),
   ];
 }
