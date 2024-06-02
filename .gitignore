@@ -107,3 +107,4 @@ APIKey/APIKey.plist
 lib/secrets.dart
 .env
 .filecache
+.dart_tool/
