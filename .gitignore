@@ -106,3 +106,4 @@ APIKey/APIKey.plist
 #for flutter
 lib/secrets.dart
 .env
+.filecache

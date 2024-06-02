@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; // 導入 Flutter 的 Material 設計庫
-import 'package:get/get.dart'; // 導入 GetX 庫
+import 'package:get/get.dart';
+import 'package:my_shop_app/pages/movie_card.dart'; // 導入 GetX 庫
 
 class ListViewController extends GetxController {
   // 定義一個 ListViewController 繼承自 GetxController

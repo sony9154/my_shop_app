@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart'; // 導入 Flutter 的 Material 設計庫
-import 'package:get/get.dart'; // 導入 GetX 包
+import 'package:get/get.dart';
+import 'package:my_shop_app/pages/movie_card.dart'; // 導入 GetX 包
 
 class BasicWidgetsPage extends StatelessWidget {
   // 定義一個無狀態的 BasicWidgetsPage 小部件
@@ -23,6 +25,7 @@ class BasicWidgetsPage extends StatelessWidget {
               'This is a Text widget', // 顯示文字
               style: TextStyle(fontSize: 24), // 設置文字樣式
             ),
+            MovieCard(posterPath: "https://m.media-amazon.com/images/M/MV5BNDIzNDU0YzEtYzE5Ni00ZjlkLTk5ZjgtNjM3NWE4YzA3Nzk3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_QL75_UX380_CR0,1,380,562_.jpg",),
             SizedBox(height: 20), // 設置固定高度的空白區域，高度為 20 像素
             Image.network(
               // Image 小部件用於顯示圖片，這裡從網絡加載圖片
